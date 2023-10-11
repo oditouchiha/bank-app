@@ -1,25 +1,27 @@
+// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+
 using BankApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace BankApp.Configurations
+namespace BankApp.Configurations;
+
+public class AccountPortofolioConfiguration : IEntityTypeConfiguration<AccountPortofolio>
 {
-    public class AccountPortofolioConfiguration : IEntityTypeConfiguration<AccountPortofolio>
+    public void Configure(EntityTypeBuilder<AccountPortofolio> builder)
     {
-        public void Configure(EntityTypeBuilder<AccountPortofolio> builder)
-        {
-            builder
-                .HasKey(ap => new { ap.AccountId, ap.PortofolioId });
+        builder
+            .HasKey(ap => new { ap.AccountId, ap.PortofolioId });
 
-            builder
-                .HasOne(ap => ap.Account)
-                .WithMany(a => a.AccountPortofolios)
-                .HasForeignKey(ap => ap.AccountId);
+        builder
+            .HasOne(ap => ap.Account)
+            .WithMany(a => a.AccountPortofolios)
+            .HasForeignKey(ap => ap.AccountId);
 
-            builder
-                .HasOne(ap => ap.Portofolio)
-                .WithMany(p => p.AccountPortofolios)
-                .HasForeignKey(ap => ap.PortofolioId);
-        }
+        builder
+            .HasOne(ap => ap.Portofolio)
+            .WithMany(p => p.AccountPortofolios)
+            .HasForeignKey(ap => ap.PortofolioId);
     }
 }

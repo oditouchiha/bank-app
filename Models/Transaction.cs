@@ -1,15 +1,17 @@
-namespace BankApp.Models
-{
-    public class Transaction
-    {
-        public int TransactionId { get; set; }
-        public DateTime Timestamp { get; set; }
-        public decimal Amount { get; set; }
-        public string Currency { get; set; } = null!;
+// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
 
-        public int DepositorAccountId { get; set; }
-        public Account DepositorAccount { get; set; } = null!;
-        public int WithdrawlAccountId { get; set; }
-        public Account WithdrawlAccount { get; set; } = null!;
-    }
+namespace BankApp.Models;
+
+public class Transaction
+{
+    public int TransactionId { get; set; }
+    public DateTime Timestamp { get; set; }
+    public decimal Amount { get; set; }
+    public string Currency { get; set; } = null!;
+
+    public int DepositorAccountId { get; set; }
+    public Account DepositorAccount { get; set; } = null!;
+    public int WithdrawlAccountId { get; set; }
+    public Account WithdrawlAccount { get; set; } = null!;
 }

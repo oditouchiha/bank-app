@@ -1,34 +1,36 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace BankApp.Migrations
+namespace BankApp.Migrations;
+
+/// <inheritdoc />
+public partial class ModifyBalanceFieldAccountTable : Migration
 {
     /// <inheritdoc />
-    public partial class ModifyBalanceFieldAccountTable : Migration
+    protected override void Up(MigrationBuilder migrationBuilder)
     {
-        /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.AlterColumn<decimal>(
-                name: "Balance",
-                table: "Accounts",
-                type: "decimal(18,2)",
-                nullable: false,
-                oldClrType: typeof(float),
-                oldType: "real");
-        }
+        migrationBuilder.AlterColumn<decimal>(
+            name: "Balance",
+            table: "Accounts",
+            type: "decimal(18,2)",
+            nullable: false,
+            oldClrType: typeof(float),
+            oldType: "real");
+    }
 
-        /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.AlterColumn<float>(
-                name: "Balance",
-                table: "Accounts",
-                type: "real",
-                nullable: false,
-                oldClrType: typeof(decimal),
-                oldType: "decimal(18,2)");
-        }
+    /// <inheritdoc />
+    protected override void Down(MigrationBuilder migrationBuilder)
+    {
+        migrationBuilder.AlterColumn<float>(
+            name: "Balance",
+            table: "Accounts",
+            type: "real",
+            nullable: false,
+            oldClrType: typeof(decimal),
+            oldType: "decimal(18,2)");
     }
 }

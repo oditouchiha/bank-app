@@ -1,38 +1,40 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿// Licensed to the .NET Foundation under one or more agreements.
+// The .NET Foundation licenses this file to you under the MIT license.
+
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace BankApp.Migrations
+namespace BankApp.Migrations;
+
+/// <inheritdoc />
+public partial class ModifyIDField : Migration
 {
     /// <inheritdoc />
-    public partial class ModifyIDField : Migration
+    protected override void Up(MigrationBuilder migrationBuilder)
     {
-        /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.RenameColumn(
-                name: "Id",
-                table: "Customers",
-                newName: "CustomerId");
+        migrationBuilder.RenameColumn(
+            name: "Id",
+            table: "Customers",
+            newName: "CustomerId");
 
-            migrationBuilder.RenameColumn(
-                name: "Id",
-                table: "Accounts",
-                newName: "AccountId");
-        }
+        migrationBuilder.RenameColumn(
+            name: "Id",
+            table: "Accounts",
+            newName: "AccountId");
+    }
 
-        /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.RenameColumn(
-                name: "CustomerId",
-                table: "Customers",
-                newName: "Id");
+    /// <inheritdoc />
+    protected override void Down(MigrationBuilder migrationBuilder)
+    {
+        migrationBuilder.RenameColumn(
+            name: "CustomerId",
+            table: "Customers",
+            newName: "Id");
 
-            migrationBuilder.RenameColumn(
-                name: "AccountId",
-                table: "Accounts",
-                newName: "Id");
-        }
+        migrationBuilder.RenameColumn(
+            name: "AccountId",
+            table: "Accounts",
+            newName: "Id");
     }
 }
