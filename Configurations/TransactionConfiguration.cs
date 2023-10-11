@@ -8,24 +8,19 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BankApp.Configurations
 {
-    public class AccountConfiguration : IEntityTypeConfiguration<Account>
+    public class TransactionConfiguration
     {
-        public void Configure(EntityTypeBuilder<Account> builder)
+        public void Configure(EntityTypeBuilder<Transaction> builder)
         {
             builder
-                .HasOne(a => a.Customer)
-                .WithOne(c => c.Account)
-                .HasForeignKey<Account>(a => a.CustomerId);
-
-            builder
-                .HasMany(a => a.DepositTransactions)
-                .WithOne(t => t.DepositorAccount)
+                .HasOne(t => t.DepositorAccount)
+                .WithMany(a => a.DepositTransactions)
                 .HasForeignKey(t => t.DepositorAccountId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder
-                .HasMany(a => a.WithdrawTransactions)
-                .WithOne(t => t.WithdrawlAccount)
+                .HasOne(t => t.WithdrawlAccount)
+                .WithMany(a => a.WithdrawTransactions)
                 .HasForeignKey(t => t.WithdrawlAccountId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
