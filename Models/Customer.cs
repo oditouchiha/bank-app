@@ -3,7 +3,7 @@
 
 namespace BankApp.Models;
 
-public class Customer
+public class Customer : Auditable
 {
     public int CustomerId { get; set; }
     public string PhoneNumber { get; set; } = null!;

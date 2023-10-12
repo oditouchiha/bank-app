@@ -12,6 +12,7 @@ public class DatabaseContext : DbContext
     public DbSet<Account> Accounts { get; set; }
     public DbSet<Transaction> Transactions { get; set; }
     public DbSet<Portofolio> Portofolios { get; set; }
+    public DbSet<AccountPortofolio> AccountsPortofolios { get; set; }
 
     public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
     {

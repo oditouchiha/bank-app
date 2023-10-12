@@ -3,7 +3,7 @@
 
 namespace BankApp.Models;
 
-public class Transaction
+public class Transaction : Auditable
 {
     public int TransactionId { get; set; }
     public DateTime Timestamp { get; set; }

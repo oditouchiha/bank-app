@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 
 namespace BankApp.Models;
 
-public class Account
+public class Account : Auditable
 {
     public Account()
     {
