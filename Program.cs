@@ -1,6 +1,7 @@
 // Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 
+using BankApp.Services.Accounts;
 using BankApp.Services.Customers;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +22,7 @@ public class Program
         builder.Services.AddSwaggerGen();
 
         builder.Services.AddTransient<CustomerService>();
+        builder.Services.AddTransient<AccountService>();
 
         var app = builder.Build();
 
