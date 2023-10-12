@@ -12,6 +12,7 @@ public class Portofolio : Auditable
         AccountPortofolios = new Collection<AccountPortofolio>();
     }
 
+    public required string Index { get; set; }
     public int PortofolioId { get; set; }
     public decimal Balance { get; set; }
     public ICollection<AccountPortofolio> AccountPortofolios { get; set; }
