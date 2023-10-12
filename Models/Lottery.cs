@@ -5,21 +5,15 @@ using System.Collections.ObjectModel;
 
 namespace BankApp.Models;
 
-public class Account : Auditable
+public class Lottery : Auditable
 {
-    public Account()
+    public Lottery()
     {
         AccountLotteries = new Collection<AccountLottery>();
     }
 
-    public int AccountId { get; set; }
+    public required string Name { get; set; }
+    public int LotteryId { get; set; }
     public decimal Balance { get; set; }
-    public string Number { get; set; } = null!;
-    public int CustomerId { get; set; }
-    public Customer Customer { get; set; } = null!;
-
-    public ICollection<Transaction>? DepositTransactions { get; set; }
-    public ICollection<Transaction>? WithdrawTransactions { get; set; }
-
     public ICollection<AccountLottery> AccountLotteries { get; set; }
 }

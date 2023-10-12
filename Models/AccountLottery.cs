@@ -3,11 +3,11 @@
 
 namespace BankApp.Models;
 
-public class AccountPortofolio
+public class AccountLottery
 {
     public int AccountId { get; set; }
     public Account Account { get; set; } = null!;
 
-    public int PortofolioId { get; set; }
-    public Portofolio Portofolio { get; set; } = null!;
+    public int LotteryId { get; set; }
+    public Lottery Lottery { get; set; } = null!;
 }

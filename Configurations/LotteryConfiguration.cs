@@ -7,13 +7,13 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BankApp.Configurations;
 
-public class PortofolioConfiguration : IEntityTypeConfiguration<Portofolio>
+public class LotteryConfiguration : IEntityTypeConfiguration<Lottery>
 {
-    public void Configure(EntityTypeBuilder<Portofolio> builder)
+    public void Configure(EntityTypeBuilder<Lottery> builder)
     {
         builder
-            .HasMany(p => p.AccountPortofolios)
-            .WithOne(ap => ap.Portofolio)
-            .HasForeignKey(ap => ap.PortofolioId);
+            .HasMany(p => p.AccountLotteries)
+            .WithOne(al => al.Lottery)
+            .HasForeignKey(ap => ap.LotteryId);
     }
 }
