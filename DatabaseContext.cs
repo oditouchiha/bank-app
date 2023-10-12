@@ -10,6 +10,8 @@ public class DatabaseContext : DbContext
 {
     public DbSet<Customer> Customers { get; set; }
     public DbSet<Account> Accounts { get; set; }
+    public DbSet<Transaction> Transactions { get; set; }
+    public DbSet<Portofolio> Portofolios { get; set; }
 
     public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
     {
