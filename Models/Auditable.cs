@@ -3,7 +3,7 @@
 
 namespace BankApp.Models;
 
-public class Auditable
+public abstract class Auditable
 {
     public DateTime Created { get; set; }
     public string? CreatedBy { get; set; }

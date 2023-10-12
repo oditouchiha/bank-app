@@ -21,8 +21,21 @@ public class DatabaseContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
+        modelBuilder.Ignore<Auditable>();
+        foreach (var et in modelBuilder.Model.GetEntityTypes())
+        {
+            if (et.ClrType.IsSubclassOf(typeof(Auditable)))
+            {
+                et.FindProperty("Created").SetDefaultValueSql("getdate()");
+                et.FindProperty("Created").ValueGenerated = Microsoft.EntityFrameworkCore.Metadata.ValueGenerated.OnAdd;
+
+                et.FindProperty("LastModified").SetDefaultValueSql("getdate()");
+                et.FindProperty("LastModified").ValueGenerated = Microsoft.EntityFrameworkCore.Metadata.ValueGenerated.OnAddOrUpdate;
+            }
+
+        }
 
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(DatabaseContext).Assembly);
+        base.OnModelCreating(modelBuilder);
     }
 }
