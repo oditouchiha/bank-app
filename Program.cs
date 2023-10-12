@@ -3,6 +3,7 @@
 
 using BankApp.Services.Accounts;
 using BankApp.Services.Customers;
+using BankApp.Services.Transactions;
 using Microsoft.EntityFrameworkCore;
 
 namespace BankApp;
@@ -23,6 +24,7 @@ public class Program
 
         builder.Services.AddTransient<CustomerService>();
         builder.Services.AddTransient<AccountService>();
+        builder.Services.AddTransient<TransactionService>();
 
         var app = builder.Build();
 
