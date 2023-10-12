@@ -14,6 +14,10 @@ public class Lottery : Auditable
 
     public required string Name { get; set; }
     public int LotteryId { get; set; }
-    public decimal Balance { get; set; }
+    public decimal PrizePool { get; set; }
+    public decimal Price { get; set; }
+    public DateTime StartDate { get; set; }
+    public DateTime EndDate { get; set; }
+
     public ICollection<AccountLottery> AccountLotteries { get; set; }
 }
