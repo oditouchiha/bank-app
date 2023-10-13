@@ -1,13 +1,13 @@
 version: "3.9" # optional since v1.27.0
 services:
-  web_api:
+  api:
     build: . # build the Docker image
-    container_name: bank_app_api
+    container_name: api
     ports:
       - "5000:80"
   sql:
     image: "mcr.microsoft.com/mssql/server:2022-latest"
-    container_name: bank_app_db
+    container_name: db
     ports: # not actually needed, because the two services are on the same network.
       - "1533:1433"
     environment:
