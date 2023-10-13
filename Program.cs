@@ -46,6 +46,9 @@ public class Program
             {
                 context.Database.Migrate();
             }
+
+            context.Database.EnsureCreated();
+            context.Seed();
         }
 
         app.UseAuthorization();
