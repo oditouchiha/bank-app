@@ -86,6 +86,10 @@ public class LotteryController : BaseController
         {
             return NotFound();
         }
+        catch (LessThanZeroException)
+        {
+            return BadRequest();
+        }
 
         return NoContent();
     }

@@ -79,6 +79,14 @@ public class LotteryService
 
         _dbContext.AccountsLotteries.Add(newAccountLottery);
 
+        lottery.PrizePool += lottery.Price;
+        account.Balance -= lottery.Price;
+
+        if (account.Balance < 0)
+        {
+            throw new LessThanZeroException();
+        }
+
         await _dbContext.SaveChangesAsync().ConfigureAwait(false);
 
         return;
