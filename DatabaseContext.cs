@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using BankApp.Models;
+using BankApp.Services.Lotteries;
 using Microsoft.EntityFrameworkCore;
 
 namespace BankApp;
@@ -13,6 +14,7 @@ public class DatabaseContext : DbContext
     public DbSet<Transaction> Transactions { get; set; }
     public DbSet<Lottery> Lotteries { get; set; }
     public DbSet<AccountLottery> AccountsLotteries { get; set; }
+    public DbSet<LotteryTotalSpendingResponse> lotteryTotalSpendingResponses { get; set; }
 
     public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
     {
@@ -22,6 +24,8 @@ public class DatabaseContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Ignore<Auditable>();
+        modelBuilder.Entity<LotteryTotalSpendingResponse>().HasNoKey();
+
         foreach (var et in modelBuilder.Model.GetEntityTypes())
         {
             if (et.ClrType.IsSubclassOf(typeof(Auditable)))

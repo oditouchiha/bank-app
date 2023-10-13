@@ -15,7 +15,6 @@ public class LotteryController : BaseController
         _lotteryService = lotteryService;
     }
 
-
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Lottery>>> Get()
     {
@@ -57,6 +56,19 @@ public class LotteryController : BaseController
             {
                 return lottery;
             }
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    [HttpGet("total-spending")]
+    public async Task<ActionResult<IEnumerable<LotteryTotalSpendingResponse>>> GetTotalSpending()
+    {
+        try
+        {
+            return await _lotteryService.GetLotteryTotalSpendingAsync().ConfigureAwait(false);
         }
         catch (NotFoundException)
         {

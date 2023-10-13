@@ -108,5 +108,24 @@ public class LotteryService
         return;
     }
 
+    public async Task<List<LotteryTotalSpendingResponse>> GetLotteryTotalSpendingAsync()
+    {
+        var sql = @"
+            SELECT
+                a.AccountId,
+                c.Name,
+                COALESCE(SUM(l.Price), 0) AS TotalSpending
+            FROM
+                AccountsLotteries al
+                RIGHT JOIN Accounts a ON al.AccountId = a.AccountId
+                LEFT JOIN Lotteries l ON al.LotteryId = l.LotteryId
+                LEFT JOIN Customers c ON a.CustomerId = c.CustomerId
+            GROUP BY
+                a.AccountId,
+                c.Name
+        ";
+
+        return await _dbContext.Set<LotteryTotalSpendingResponse>().FromSqlRaw(sql).ToListAsync().ConfigureAwait(false) ?? throw new NotFoundException(nameof(LotteryTotalSpendingResponse));
+    }
 
 }
