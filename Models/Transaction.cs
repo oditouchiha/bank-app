@@ -8,10 +8,10 @@ public class Transaction : Auditable
     public int TransactionId { get; set; }
     public DateTime Timestamp { get; set; }
     public decimal Amount { get; set; }
-    public string Currency { get; set; } = null!;
+    public string? Currency { get; set; }
 
     public int DepositorAccountId { get; set; }
-    public Account DepositorAccount { get; set; } = null!;
+    public Account? DepositorAccount { get; set; }
     public int WithdrawlAccountId { get; set; }
-    public Account WithdrawlAccount { get; set; } = null!;
+    public Account? WithdrawlAccount { get; set; }
 }

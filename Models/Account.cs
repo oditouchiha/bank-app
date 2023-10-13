@@ -14,9 +14,9 @@ public class Account : Auditable
 
     public int AccountId { get; set; }
     public decimal Balance { get; set; }
-    public string Number { get; set; } = null!;
+    public string? Number { get; set; }
     public int CustomerId { get; set; }
-    public Customer Customer { get; set; } = null!;
+    public Customer? Customer { get; set; }
 
     public ICollection<Transaction>? DepositTransactions { get; set; }
     public ICollection<Transaction>? WithdrawTransactions { get; set; }

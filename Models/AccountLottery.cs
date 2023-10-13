@@ -6,8 +6,8 @@ namespace BankApp.Models;
 public class AccountLottery
 {
     public int AccountId { get; set; }
-    public Account Account { get; set; } = null!;
+    public Account? Account { get; set; }
 
     public int LotteryId { get; set; }
-    public Lottery Lottery { get; set; } = null!;
+    public Lottery? Lottery { get; set; }
 }

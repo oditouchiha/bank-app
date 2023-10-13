@@ -5,7 +5,7 @@ namespace BankApp.Services.Customers;
 
 public class CustomerCreateSchema
 {
-    public string name { get; set; } = null!;
-    public string phoneNumber { get; set; } = null!;
-    public string address { get; set; } = null!;
+    public string? name { get; set; }
+    public string? phoneNumber { get; set; }
+    public string? address { get; set; }
 }
